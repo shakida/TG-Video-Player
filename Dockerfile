@@ -7,4 +7,4 @@ RUN mkdir /TG-Video-Player/
 WORKDIR /TG-Video-Player/
 COPY . /TG-Video-Player/
 RUN pip3 install -U -r requirements.txt
-CMD python3 -m handel
+CMD python3 main.py
