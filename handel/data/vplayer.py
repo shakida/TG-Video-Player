@@ -10,7 +10,7 @@ from pyrogram.errors import FloodWait
 from pytgcalls import GroupCallFactory
 CHAT_ID = Config.CHAT_ID
 from handel.data.lol import User
-STREAM = {}
+STREAM = {9}
 VIDEO_CALL = {}
 
 group_call_factory = GroupCallFactory(User, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
@@ -34,7 +34,7 @@ async def stream(client, m: Message):
         except Exception as e:
             await msg.edit(f"`{e}")
             pass
-
+        await sleep(7)
         group_call = group_call_factory.get_file_group_call(f'VID-{CHAT_ID}.raw')
         try:
             await group_call.start(CHAT_ID)
