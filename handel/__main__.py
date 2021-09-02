@@ -4,6 +4,7 @@ import asyncio
 from pyrogram import Client, idle
 from config import Config
 from pyrogram.raw import functions, types
+from handel.data.lol import User
 
 Bot = Client(
     ":memory:",
