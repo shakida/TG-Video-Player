@@ -9,7 +9,7 @@ from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from pytgcalls import GroupCallFactory
 CHAT_ID = Config.CHAT_ID
-from handel.__main__ import User
+from handel.data.lol import User
 STREAM = {}
 VIDEO_CALL = {}
 
