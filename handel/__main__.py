@@ -10,7 +10,7 @@ Bot = Client(
     Config.API_ID,
     Config.API_HASH,
     bot_token=Config.BOT_TOKEN,
-    plugins=dict(root="bot.data"),
+    plugins=dict(root="handel.s"),
 )
 if not os.path.isdir("./downloads"):
     os.makedirs("./downloads")
