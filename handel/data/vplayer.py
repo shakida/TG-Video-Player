@@ -10,7 +10,6 @@ from pyrogram.errors import FloodWait
 from pytgcalls import GroupCallFactory
 from handel.__main__ import app
 CHAT_ID = Config.CHAT_ID
-STREAM = {9}
 instant = {}
 
 group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
