@@ -15,7 +15,7 @@ VIDEO_CALL = {}
 
 group_call_factory = GroupCallFactory(User, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
 
-@Client.on_message(filters.command(["vplay"]) & (filters.chat(CHAT_ID) | filters.private))
+@Client.on_message(filters.command(["vplay"]) & (filters.chat(CHAT_ID) | filters.group))
 async def stream(client, m: Message):
     if 1 in STREAM:
         await m.reply_text("Video overwrited!!")
@@ -71,7 +71,7 @@ async def stream(client, m: Message):
         await m.reply_text("**Reply a video**")
         return
 
-@Client.on_message(filters.command(["end"]) & (filters.chat(CHAT_ID) | filters.private))
+@Client.on_message(filters.command(["end"]) & (filters.chat(CHAT_ID) | filters.group))
 async def endstream(client, m: Message):
     if 0 in STREAM:
         await m.reply_text("**Nothing is playing**!!")
