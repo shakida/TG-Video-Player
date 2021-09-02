@@ -15,7 +15,7 @@ instant = {}
 
 group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
 
-@app.on_message(filters.command(["vplay"]) & (filters.chat(CHAT_ID) | filters.group))
+@Client.on_message(filters.command(["vplay"]) & (filters.chat(CHAT_ID) | filters.group))
 async def video(client, m: Message):
     media = m.reply_to_message
     if not media:
@@ -53,7 +53,7 @@ async def video(client, m: Message):
         await m.reply_text("**Retry Error !!**")
         return
 
-@app.on_message(filters.command(["end"]) & (filters.chat(CHAT_ID) | filters.group))
+@Client.on_message(filters.command(["end"]) & (filters.chat(CHAT_ID) | filters.group))
 async def end(client, m: Message):
     try:
         await instant[CHAT_ID].stop()
