@@ -1,15 +1,10 @@
-FROM python:latest
+FROM debian:latest
 
 RUN apt update && apt upgrade -y
 RUN apt install git curl python3-pip ffmpeg -y
-
-RUN cd /
-RUN wget -q https://github.com/shakida/TG-Video-Player/archive/main.tar.gz && \
-    tar xf main.tar.gz && rm main.tar.gz
-
-WORKDIR /TG-Video-Player-main
-
 RUN pip3 install -U pip
+RUN mkdir /TG-Video-Player/
+WORKDIR /TG-Video-Player/
+COPY . /TG-Video-Player/
 RUN pip3 install -U -r requirements.txt
-
 CMD python3 -m handel
