@@ -23,6 +23,7 @@ User = Client(
 
 Bot.start()
 User.start()
+print("Bot & User started")
 
 idle()
 Bot.stop()
