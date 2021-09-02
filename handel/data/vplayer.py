@@ -25,7 +25,7 @@ async def stream(client, m: Message):
         await m.reply_text("**Reply a video**")
         return
     elif media.video or media.document:
-        msg = await m.reply_text("**Downloading..**)
+        msg = await m.reply_text("**Downloading..**")
         if os.path.exists(f'VID-{CHAT_ID}.raw'):
             os.remove(f'VID-{CHAT_ID}.raw')
         try:
