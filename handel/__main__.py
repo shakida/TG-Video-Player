@@ -5,12 +5,6 @@ from pyrogram import Client, idle
 from config import Config
 from pyrogram.raw import functions, types
 
-User = Client(
-    Config.SESSION_STRING,
-    Config.API_ID,
-    Config.API_HASH
-)
-
 Bot = Client(
     ":memory:",
     Config.API_ID,
