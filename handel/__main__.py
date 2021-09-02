@@ -20,3 +20,4 @@ print("Video Player started")
 
 idle()
 app.stop()
+print("stopped")
