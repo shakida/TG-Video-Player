@@ -1,6 +1,6 @@
 from pyrogram import Client, idle
 
-app = Client(Op)
+app = Client("shakida")
 app.start()
 print("Started")
 
