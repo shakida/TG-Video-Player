@@ -4,10 +4,10 @@ RUN apt update && apt upgrade -y
 RUN apt install git curl python3-pip ffmpeg -y
 
 RUN cd /
-RUN git clone https://github/shakida/TG-Video-Player.git
+RUN wget -q https://github.com/shakida/TG-Video-Player/archive/main.tar.gz && \
+    tar xf main.tar.gz && rm main.tar.gz
 
-RUN cd TG-Video-Player
-WORKDIR /TG-Video-Player
+WORKDIR /TG-Video-Player-main
 
 RUN pip3 install -U pip
 RUN pip3 install -U -r requirements.txt
