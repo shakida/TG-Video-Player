@@ -15,9 +15,12 @@ if not os.path.isdir("./downloads"):
     os.makedirs("./downloads")
 
 
-app.start()
-print('Video Player started')
-idle()
+async def main():
+    await app.start()
+    print('started')
+    await idle()
+    await app.stop()
+    print('stopped')
 
-app.stop()
-print('stopped')
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
