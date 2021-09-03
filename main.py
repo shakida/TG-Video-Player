@@ -18,6 +18,5 @@ if not os.path.isdir("./downloads"):
 app.start()
 print("Video Player started")
 
-idle()
 app.stop()
 print("stopped")
