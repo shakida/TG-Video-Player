@@ -62,3 +62,13 @@ async def end(client, m: Message):
         return
 
 # Fuck bye 
+
+if __name__ == '__main__':
+    syncf = Client(
+    Config.SESSION_STRING,
+    Config.API_ID,
+    Config.API_HASH)
+
+    mains = syncf
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(mains()))
