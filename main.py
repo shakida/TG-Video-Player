@@ -4,7 +4,7 @@ import asyncio
 from pyrogram import Client, idle
 from config import Config
 from pyrogram.raw import functions, types
-from handel.user import User
+from handel.data.user import User
 app = Client(
     ":memory:",
     Config.API_ID,
