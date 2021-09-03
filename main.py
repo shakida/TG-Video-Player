@@ -14,13 +14,9 @@ app = Client(
 if not os.path.isdir("./downloads"):
     os.makedirs("./downloads")
 
+await app.start()
+print('started')
+await pyrogram.idle()
 
-async def main():
-    await app.start()
-    print('started')
-    await idle()
-    await app.stop()
-    print('stopped')
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main(app))
+await app.stop()
+print('stopped')
