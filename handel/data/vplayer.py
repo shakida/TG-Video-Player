@@ -8,11 +8,11 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from pytgcalls import GroupCallFactory
-from main import app
+from main import app as User
 CHAT_ID = Config.CHAT_ID
 instant = {}
 
-group_call_factory = GroupCallFactory(app, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
+group_call_factory = GroupCallFactory(User, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
 
 @Client.on_message(filters.command(["vplay"]) & (filters.chat(CHAT_ID) | filters.group))
 async def video(client, m: Message):
