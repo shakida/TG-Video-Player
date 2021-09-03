@@ -25,8 +25,9 @@ async def video(client, m: Message):
         if os.path.exists(f'VID-{CHAT_ID}.raw'):
             os.remove(f'VID-{CHAT_ID}.raw')
         try:
+            await msg.edit("**Converting...**")
             video = await client.download_media(media)
-            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le -filter:a "atempo=0.81" VID-{CHAT_ID}.raw -y')
+            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le VID-{CHAT_ID}.raw -y')
         except Exception as e:
             await msg.edit(f"`{e}")
             pass
