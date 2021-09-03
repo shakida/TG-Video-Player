@@ -18,9 +18,9 @@ if not os.path.isdir("./downloads"):
 
 
 app.start()
-await lol = app.send_message(Config.CHAT_ID, "**Video Player Bot is Online**")
+lol = app.send_message(Config.CHAT_ID, "**Video Player Bot is Online**")
 User.start()
-await lol.edit("**Video Player Bot is Online**\n**User Id online**")
+lol.edit("**Video Player Bot is Online**\n**User Id online**")
 print('Started')
 idle()
 app.stop()
