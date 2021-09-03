@@ -8,7 +8,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from pytgcalls import GroupCallFactory
-from handel.user import User
+from handel.data.user import User
 CHAT_ID = Config.CHAT_ID
 instant = {}
 
