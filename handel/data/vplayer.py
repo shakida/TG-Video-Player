@@ -31,7 +31,7 @@ async def video(client, m: Message):
         except Exception as e:
             await msg.edit(f"`{e}")
             pass
-        await sleep(2)
+        await sleep(5)
         group_call = group_call_factory.get_file_group_call(f'VID-{CHAT_ID}.raw')
         try:
             await group_call.start(CHAT_ID)
@@ -50,7 +50,7 @@ async def video(client, m: Message):
             await msg.edit(f"`{e}")
             return
     else:
-        await m.reply_text("**Retry Error !!**")
+        await m.reply_text("**Error ‼️**")
         return
 
 @Client.on_message(filters.command(["end"]) & (filters.chat(CHAT_ID) | filters.group))
@@ -59,7 +59,7 @@ async def end(client, m: Message):
         await instant[CHAT_ID].stop()
         await m.reply_text("**Stopped Playing!**")
     except Exception as e:
-        await m.reply_text(f"`{e}`")
+        await m.reply_text(f"**Error ‼️:**\n`{e}`")
         return
 
 # Fuck bye 
