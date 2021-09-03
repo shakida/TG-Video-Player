@@ -20,6 +20,3 @@ async def main(app):
        await pyrogram.idle()
        await app.stop()
        print('stopped')
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main(app))
