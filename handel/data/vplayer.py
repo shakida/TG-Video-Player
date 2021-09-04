@@ -32,12 +32,6 @@ async def video(client, m: Message):
             await sleep(1)
         try:
             await Call.join_group_call({CHAT_ID},
-            InputAudioStream(
-            f'{CHAT_ID}.raw',
-            AudioParameters(
-                bitrate=48000,
-            ),
-                ),
             InputVideoStream(
             video,
             VideoParameters(
