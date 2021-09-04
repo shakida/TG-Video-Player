@@ -52,7 +52,7 @@ async def video(client, m: Message):
             await msg.edit(f"`{e}`")
             return
         
-    else:
+     else:
         await m.reply_text("**Error ‼️**")
         return
 
