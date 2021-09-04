@@ -18,8 +18,3 @@ if not os.path.isdir("./downloads"):
 
 
 app.start()
-User.start()
-print('Started')
-idle()
-app.stop()
-User.stop()
