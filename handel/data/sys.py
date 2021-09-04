@@ -1,7 +1,6 @@
 from datetime import datetime
 
 import psutil
-# noinspection PyProtectedMember
 from psutil._common import bytes2human
 from pyrogram import Client, filters
 
