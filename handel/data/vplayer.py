@@ -22,16 +22,25 @@ async def video(client, m: Message):
         if os.path.exists(f'{CHAT_ID}.raw'):
             os.remove(f'{CHAT_ID}.raw')
         try:
-            video = await client.download_media(media)
-            await msg.edit("**Converting...**") 
+            video1 = await client.download_media(media)
+            await msg.edit("**Converting...**")
+            os.system(f'ffmpeg -i {video1} -an -c copy vid-{CHAT_ID}.raw -y')
+            os.system(f'ffmpeg -i "{video1}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le a-{CHAT_ID}.raw -y')
+            video = 'vid-{CHAT_ID}.raw'
+            audio = 'a-{CHAT_ID}.raw'
         except Exception as e:
             await msg.edit(f"`{e}")
             pass
             await sleep(1)
         try:
             await Call.join_group_call({CHAT_ID},
+            InputAudioStream(
+            audio,
+            AudioParameters(
+                bitrate=48000,
+            ),
             InputVideoStream(
-            {CHAT_ID}.raw,
+            video,
             VideoParameters(
                 width=640,
                 height=360,
