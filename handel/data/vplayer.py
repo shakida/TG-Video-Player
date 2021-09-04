@@ -28,11 +28,7 @@ async def video(client, m: Message):
             os.system(f'ffmpeg -i "{video1}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le a-{CHAT_ID}.raw -y')
             video = 'vid-{CHAT_ID}.raw'
             audio = 'a-{CHAT_ID}.raw'
-        except Exception as e:
-            await msg.edit(f"`{e}")
-            pass
-            await sleep(1)
-        try:
+            await sleep(3)
             await Call.join_group_call({CHAT_ID},
             InputAudioStream(
             audio,
