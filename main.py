@@ -4,7 +4,7 @@ import asyncio
 from pyrogram import Client, idle
 from config import Config
 from pyrogram.raw import functions, types
-from handel.data.user import User
+from handel.data.user import User, run
 app = Client(
     ":memory:",
     Config.API_ID,
@@ -18,3 +18,5 @@ if not os.path.isdir("./downloads"):
 
 
 app.start()
+run()
+idle()
