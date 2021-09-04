@@ -15,4 +15,3 @@ Call = PyTgCalls(User)
 
 
 Call.start()
-idle()
