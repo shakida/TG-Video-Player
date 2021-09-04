@@ -2,6 +2,7 @@ import asyncio
 from pyrogram import Client, filters
 from config import Config
 from pytgcalls import PyTgCalls
+from pytgcalls import idle
 
 
 
@@ -13,4 +14,5 @@ User = Client(
 Call = PyTgCalls(User)
 
 
-run = Call.start
+Call.start()
+idle()
