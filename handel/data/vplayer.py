@@ -23,9 +23,7 @@ async def video(client, m: Message):
             os.remove(f'{CHAT_ID}.raw')
         try:
             video = await client.download_media(media)
-            await msg.edit("**Converting...**")
-            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le {CHAT_ID}.raw -y')
-            
+            await msg.edit("**Converting...**") 
         except Exception as e:
             await msg.edit(f"`{e}")
             pass
@@ -33,7 +31,7 @@ async def video(client, m: Message):
         try:
             await Call.join_group_call({CHAT_ID},
             InputVideoStream(
-            video,
+            {CHAT_ID}.raw,
             VideoParameters(
                 width=640,
                 height=360,
