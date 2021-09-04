@@ -13,4 +13,4 @@ User = Client(
 Call = PyTgCalls(User)
 
 
-run = Call.start()
+run = Call.start
