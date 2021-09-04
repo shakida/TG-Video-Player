@@ -18,3 +18,4 @@ if not os.path.isdir("./downloads"):
 
 
 app.start()
+idle()
