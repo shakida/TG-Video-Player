@@ -6,13 +6,10 @@ from asyncio import sleep
 from config import Config
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from pyrogram.errors import FloodWait
-from pytgcalls import GroupCallFactory
-from handel.data.user import User
+from handel.data.user import User, Call
 CHAT_ID = Config.CHAT_ID
 instant = {}
 
-group_call_factory = GroupCallFactory(User, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM)
 
 @Client.on_message(filters.command(["vplay"]) & (filters.chat(CHAT_ID) | filters.group))
 async def video(client, m: Message):
@@ -25,27 +22,31 @@ async def video(client, m: Message):
         if os.path.exists(f'VID-{CHAT_ID}.raw'):
             os.remove(f'VID-{CHAT_ID}.raw')
         try:
-            await msg.edit("**Converting...**")
             video = await client.download_media(media)
-            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le VID-{CHAT_ID}.raw -y')
+            await msg.edit("**Converting...**")
+            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le AD-{CHAT_ID}.raw -y')
+            audio = 'AD-{CHAT_ID}.raw'
         except Exception as e:
             await msg.edit(f"`{e}")
             pass
-        await sleep(5)
-        group_call = group_call_factory.get_file_group_call(f'VID-{CHAT_ID}.raw')
+            await sleep(2)
         try:
-            await group_call.start(CHAT_ID)
-            await group_call.set_video_capture(video)
-            instant[CHAT_ID] = group_call
-            await msg.edit("**Video playing..**")
-        except FloodWait as e:
-            await sleep(e.x)
-            if not group_call.is_connected:
-                await group_call.start(CHAT_ID)
-                await group_call.set_video_capture(video)
-                instant[CHAT_ID] = group_call
-                await msg.edit("**Video playing..**")
-                
+            await Call.join_group_call({CHAT_ID},
+            InputAudioStream(
+            audio,
+            AudioParameters(
+                bitrate=48000,
+                ),
+                ),
+            InputVideoStream(
+            video,
+            VideoParameters(
+                width=640,
+                height=360,
+                frame_rate=24,
+               ),
+            ),
+            stream_type=StreamType().local_stream,)
         except Exception as e:
             await msg.edit(f"`{e}")
             return
@@ -56,7 +57,7 @@ async def video(client, m: Message):
 @Client.on_message(filters.command(["end"]) & (filters.chat(CHAT_ID) | filters.group))
 async def end(client, m: Message):
     try:
-        await instant[CHAT_ID].stop()
+        Call.leave_group_call({CHAT_ID}) 
         await m.reply_text("**Stopped Playing!**")
     except Exception as e:
         await m.reply_text(f"**Error ‼️:**\n`{e}`")
