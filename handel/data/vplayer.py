@@ -48,9 +48,6 @@ async def video(client, m: Message):
                ),
             ),
             stream_type=StreamType().local_stream,)
-        except:
-            await msg.edit("Error!")
-            return
         
     else:
         await m.reply_text("**Error ‼️**")
