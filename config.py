@@ -1,9 +1,12 @@
 import os
 import re
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Config:
-    API_ID = "2687507"
-    CHAT_ID = "-100"
-    API_HASH = "2401930e935bc70"
-    BOT_TOKEN = "17858650:SQJDrqO-7VlBqes"
-    SESSION_STRING = "BQA1Pi-9psM83TjhgJMOEHyAUgUM0e1I8VIozr6JBqxouJYY9no-wVU9MLEnU07tgVuV3noZNdmjLyDf-ZkxpS_kxC4mOEToNU4ByTgfhAiALPvlAPJMFGLTMruY4-kq3qxFKI8rldItS8FPKCrrNGm5_6hWCvCWAIfO-8BLuVgoMW1yqTxn4tPu23zV8s9dZq0rFEL3ZBRAC_zcOfjh7CBl3IzfgXwW3bUcyqmW98cdsf692qdEkotF_FXidWlZimR8piDFHd701rsHX3gBXNAM20OzIO2m5IxnKDcC_XqWAjkwLSLo_rfP-c-OiNQ6oXBjAwgA"
+    API_ID = int(os.environ.get("API_ID", ""))
+    CHAT_ID = int(os.environ.get("CHAT_ID", ""))
+    API_HASH = os.environ.get("API_HASH", "")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+    SESSION_STRING = os.environ.get("SESSION_STRING", "")
