@@ -1,19 +1,8 @@
-{
+ {
     "name": "TG-VIDEO-PLAYER",
     "description": "Video play in tg video chat",
     "repository": "https://github.com/shakida/TG-Video-Player",
     "stack": "container",
-    "keywords": [
-      "telegram",
-      "voicechat",
-      "bot",
-      "video",
-      "player",
-      "python",
-      "pyrogram",
-      "pytgcalls",
-      "videoplayer"
-    ],
     "env": {
       "API_ID": {
         "description": "User Account Telegram API_ID get it from my.telegram.org/apps",
