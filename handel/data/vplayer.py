@@ -24,10 +24,10 @@ async def video(client, m: Message):
         try:
             video1 = await client.download_media(media)
             await msg.edit("**Converting...**")
-            os.system(f'ffmpeg -i {video1} -an -c copy vid-{CHAT_ID}.raw -y')
-            os.system(f'ffmpeg -i "{video1}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le a-{CHAT_ID}.raw -y')
-            video = 'vid-{CHAT_ID}.raw'
-            audio = 'a-{CHAT_ID}.raw'
+            os.system(f'ffmpeg -i {video1} -f rawvideo -pix_fmt yuv420p -vf scale=640:-1 {OUTPUT_FILE}')
+            os.system(f'ffmpeg -i {video1} -f s16le -ac 1 -ar 48000 audio.raw -f rawvideo -r 24 -pix_fmt yuv420p -vf scale={SCALING}:-1 video.raw -y')
+            videox = 'video.raw'
+            audio = 'audio.raw'
         except Exception as e:
             await msg.edit(f"`{e}`")
             pass
