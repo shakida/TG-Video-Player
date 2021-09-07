@@ -4,7 +4,7 @@ ffmpeg-python
 python-dotenv
 git+https://github.com/pyrogram/pyrogram@master
 psutil
-git+https://github.com/pytgcalls/pytgcalls@dev
+git+https://github.com/pytgcalls/pytgcalls@master
 aiohttp
 aiofiles
 asyncio
