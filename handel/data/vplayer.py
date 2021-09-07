@@ -20,13 +20,13 @@ async def video(client, m: Message):
     elif media.video or media.document:
         msg = await m.reply_text("**Downloading..**")
         if os.path.exists(f'{CHAT_ID}.raw'):
-            os.remove(f'{CHAT_ID}.raw')
-            video1 = await client.download_media(media)
-            await msg.edit("**Converting...**")
-            os.system(f'ffmpeg -i {video1} -f s16le -ac 1 -ar 48000 audio.raw -f rawvideo -r 24 -pix_fmt yuv420p -vf scale={SCALING}:-1 video.raw -y')
-            videox = 'video.raw'
-            audiox = 'audio.raw'
-            await sleep(3)
+               os.remove(f'{CHAT_ID}.raw')
+        video1 = await client.download_media(media)
+        await msg.edit("**Converting...**")
+        os.system(f'ffmpeg -i {video1} -f s16le -ac 1 -ar 48000 audio.raw -f rawvideo -r 24 -pix_fmt yuv420p -vf scale={SCALING}:-1 video.raw -y')
+        videox = 'video.raw'
+        audiox = 'audio.raw'
+        await sleep(3)
         try:
             await Call.join_group_call({CHAT_ID},
             InputAudioStream(
@@ -43,7 +43,8 @@ async def video(client, m: Message):
                ),
             ),
             stream_type=StreamType().local_stream,)
-        except:
+        except Exception as e:
+            await m.reply_text(f"**Error ‼️:**\n`{e}`")
             pass
         
     else:
