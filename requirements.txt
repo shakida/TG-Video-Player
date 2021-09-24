@@ -1,4 +1,4 @@
 TgCrypto
 requests
-git+https://github.com/pyrogram/pyrogra
+git+https://github.com/pyrogram/pyrogram
 pytgcalls==3.0.0.dev19
