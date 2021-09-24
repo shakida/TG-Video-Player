@@ -1,3 +1,4 @@
 TgCrypto
 requests
-ffmpeg-python
+git+https://github.com/pyrogram/pyrogra
+pytgcalls==3.0.0.dev19
