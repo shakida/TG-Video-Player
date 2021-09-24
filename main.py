@@ -16,7 +16,7 @@ API_ID = '6449039'
 API_HASH = '709d7db09312474ff3b572c8990a2642'
 SESSION = 'BQBzZwJ71UWHcXewzrVcpmYzaIsDMX5bxpPQ56IgrbPbzWYarjMvktO6OhUxImtrOilRZ_26phRjEawhdxNlgRRE_RJ2Mv_kM3QzgRuW9gdlc2FUIEOWnUjZjVs9zgAx5XNPQlHr4qGRTnipH1hB7TAqozb5p2h52tLEWB5KFsGEChqLn026PpI-hQAkvaWuPYyP4-I2PXNqXj8vYRMRg06JXfbUl7EtGgI7V2vUe10R29W-We8OhODWpoaW6FzV3JmmQteVa6jGWZ8yJpKX6uVrHln_ONRwpWbDtIekyRF2-tN4YMhZj-VifI3QKDVBl3Q1B4R1YqvDSVFNTx3Zr8vLWG45kwA'
 
-CHAT_ID = '-1001297289773' # it can be a channel too
+CHAT_ID = '-1001190924934' # it can be a channel too
 INPUT_SOURCE = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
 # EDIT END
 # client = Client(SESSION, API_ID, API_HASH)
