@@ -19,7 +19,7 @@ SESSION = 'BQBzZwJ71UWHcXewzrVcpmYzaIsDMX5bxpPQ56IgrbPbzWYarjMvktO6OhUxImtrOilRZ
 CHAT_ID = '-1001190924934' # it can be a channel too
 INPUT_SOURCE = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
 # EDIT END
-client = Client(SESSION, API_ID, API_HASH)
+# client = Client(SESSION, API_ID, API_HASH)
 
 
 async def main(client):
@@ -31,7 +31,7 @@ async def main(client):
 
 
 if __name__ == '__main__':
-    pyro_client = pyrogram.Client('pytgcalls', API_ID, API_HASH)
+    pyro_client = pyrogram.Client(SESSION, API_ID, API_HASH)
     pyro_client.start()
 
     asyncio.get_event_loop().run_until_complete(main(pyro_client))
