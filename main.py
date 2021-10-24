@@ -27,14 +27,14 @@ app.send_message(-1001297289773, '🟢 Ready to sex')
 
 
 @app.on_message(pyrogram.filters.command(["live"]))
-async def (app, message: Message):
+async def live(app, message: Message):
  try:
     if len(message) < 2:
         return
     query = message.text.split(None, 1)[1]
     remote = query
     try:
-        call_py.join_group_call(
+        await call_py.join_group_call(
         -1001297289773,
         AudioVideoPiped(
             remote,
@@ -50,7 +50,7 @@ async def (app, message: Message):
         print(e)
         pass
     try:
-        call_py.join_group_call(
+        await call_py.join_group_call(
         -1001602466526,
         AudioVideoPiped(
             remote,
