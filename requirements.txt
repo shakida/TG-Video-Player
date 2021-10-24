@@ -1,6 +1,5 @@
 TgCrypto
 requests
 ffmpeg-python
-python-dotenv
 git+https://github.com/pytgcalls/pytgcalls@dev
 git+https://github.com/pyrogram/pyrogram@master
