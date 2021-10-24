@@ -1,6 +1,7 @@
 import os
 import sys
 import asyncio
+import pyrogram
 from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.raw import functions, types
@@ -25,7 +26,7 @@ app.send_message(-1001297289773, '🟢 Ready to sex')
    # print('start')
 
 
-@app.on_message([!live] & filters.group filters.private)
+@app.on_message(pyrogram.filters.command(["live"]))
 async def (app, message: Message):
  try:
     if len(message) < 2:
