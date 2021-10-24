@@ -21,7 +21,8 @@ call_py = PyTgCalls(app)
 if __name__ == '__main__':
     call_py.start()
     remote = 'https://raw.githubusercontent.com/shakida/hlsflow/main/horimiya9/master.m3u8'
-    call_py.join_group_call(
+    try:
+        call_py.join_group_call(
         -1001529161116,
         AudioVideoPiped(
             remote,
@@ -32,5 +33,40 @@ if __name__ == '__main__':
             },
         ),
         stream_type=StreamType().pulse_stream,
-    )
+        )
+    except Exception as e:
+        print(e)
+        pass
+    try:
+        call_py.join_group_call(
+        -1001297289773,
+        AudioVideoPiped(
+            remote,
+            HighQualityAudio(),
+            HighQualityVideo(),
+            headers={
+                'User-Agent': Browsers().chrome_windows,
+            },
+        ),
+        stream_type=StreamType().pulse_stream,
+        )
+    except Exception as e:
+        print(e)
+        pass
+    try:
+        call_py.join_group_call(
+        -1001518333595,
+        AudioVideoPiped(
+            remote,
+            HighQualityAudio(),
+            HighQualityVideo(),
+            headers={
+                'User-Agent': Browsers().chrome_windows,
+            },
+        ),
+        stream_type=StreamType().pulse_stream,
+        )
+    except Exception as e:
+        print(e)
+        pass
     idle()
