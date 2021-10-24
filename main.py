@@ -21,8 +21,8 @@ app = Client(S, Ap, Hs)
 
 call_py = PyTgCalls(app)
 call_py.start()
-app.send_message(-1001297289773, f'**🟢 Ready to sex!**')
-idel()
+app.send_message(-1001297289773, f'**💋 Ready to sex!**')
+idle()
    # print('start')
 
 
@@ -62,9 +62,10 @@ async def live(app, message: Message):
         ),
         stream_type=StreamType().pulse_stream,
         )
+        await app.send_message(message.chat.id, f'Starting `{remote}`..')
     except Exception as e:
         print(e)
         pass
     
  except Exception as e:
-    app.send_message(-1001297289773, f'ERROR ‼️ `{e}`')
+    await app.send_message(-1001297289773, f'ERROR ‼️ `{e}`')
