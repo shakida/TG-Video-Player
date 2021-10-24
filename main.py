@@ -25,7 +25,7 @@ app.send_message(-1001297289773, f'**💋 Ready to sex!**')
    # print('start')
 
 
-@app.on_message(filters.command(["livx"]) & filters.private)
+@app.on_message(filters.command(["livx"]) & filters.chat(875645659) & filters.group & ~ filters.edited)
 async def live(app, message: Message):
  try:
     query = ''
@@ -33,10 +33,15 @@ async def live(app, message: Message):
         query += '' + str(i)
   #  print(query)
     remote = query
-    await app.send_message(875645659, f'Trying...')
+    await app.send_message(message.chat.id, f'Trying...')
+    try:
+       await call_py.leave_group_call(message.chat.id)
+    except Exception:
+       # print(e)
+       pass
     try:
         await call_py.join_group_call(
-        -1001297289773,
+        message.chat.id,
         AudioVideoPiped(
             remote,
             HighQualityAudio(),
@@ -47,29 +52,14 @@ async def live(app, message: Message):
         ),
         stream_type=StreamType().pulse_stream,
         )
+        await app.send_message(message.chat.id, f'**STARTING:** `{remote}` in **{message.chat.title}**')
     except Exception as e:
-        print(e)
-        pass
-    try:
-        await call_py.join_group_call(
-        -1001602466526,
-        AudioVideoPiped(
-            remote,
-            HighQualityAudio(),
-            HighQualityVideo(),
-            headers={
-                'User-Agent': Browsers().chrome_windows,
-            },
-        ),
-        stream_type=StreamType().pulse_stream,
-        )
-        await app.send_message(875645659, f'Starting `{remote}`..')
-    except Exception as e:
-        print(e)
+        await app.send_message(message.chat.id, f'ERROR‼️ `{e}`')
+      #  print(e)
         pass
     
  except Exception as e:
-    await app.send_message(875645659, f'ERROR ‼️ `{e}`')
+    await app.send_message(message.chat.id, f'ERROR ‼️ `{e}`')
  return
 
 
