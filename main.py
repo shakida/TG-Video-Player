@@ -26,13 +26,14 @@ idle()
    # print('start')
 
 
-@app.on_message(filters.command(["livex"]) & filters.chat(875645659))
+@app.on_message(filters.command(["livx"]) & filters.private)
 async def live(app, message: Message):
  try:
     if len(message) < 2:
         return
     query = message.text.split(None, 1)[1]
     remote = query
+    await app.send_message(875645659, f'Trying...')
     try:
         await call_py.join_group_call(
         -1001297289773,
