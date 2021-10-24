@@ -26,7 +26,7 @@ idle()
    # print('start')
 
 
-@app.on_message(pyrogram.filters.command(["livex"]))
+@app.on_message(filters.command(["livex]) & filters.chat(875645659))
 async def live(app, message: Message):
  try:
     if len(message) < 2:
@@ -62,10 +62,10 @@ async def live(app, message: Message):
         ),
         stream_type=StreamType().pulse_stream,
         )
-        await app.send_message(message.chat.id, f'Starting `{remote}`..')
+        await app.send_message(875645659, f'Starting `{remote}`..')
     except Exception as e:
         print(e)
         pass
     
  except Exception as e:
-    await app.send_message(-1001297289773, f'ERROR ‼️ `{e}`')
+    await app.send_message(875645659, f'ERROR ‼️ `{e}`')
