@@ -2,6 +2,7 @@ import os
 import sys
 import asyncio
 from pyrogram import Client
+from pyrogram.types import Message
 from pyrogram.raw import functions, types
 from pytgcalls import PyTgCalls
 from pytgcalls import StreamType
@@ -18,27 +19,19 @@ app = Client(S, Ap, Hs)
 
 
 call_py = PyTgCalls(app)
-if __name__ == '__main__':
-    call_py.start()
-    print('start')
-  #  reggmote = 'https://prod-fastly-ap-southeast-1.video.pscp.tv/Transcoding/v1/hls/kRKtAtz63hw6yHRod6XzR3VgCXRaDne61n5s8DiOfh4i_YtnbEGJBa7xDbE5K0cM0LiKDt50Mj1Wgp6XBS6FmA/transcode/ap-southeast-1/periscope-replay-direct-live/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0.eyJFbmNvZGVyU2V0dGluZyI6ImVuY29kZXJfc2V0dGluZ18xMDgwcDMwXzEwIiwiSGVpZ2h0IjoxMDgwLCJLYnBzIjo1NTAwLCJXaWR0aCI6MTkyMH0.OImMZabKYJ0cs9CnIapU-4aBk6KNBiJxi1hh-6l4BZ4/dynamic_highlatency.m3u8?type=live241@LiveCricket_Links_Official'
-    remote = 'https://prod-fastly-ap-southeast-1.video.pscp.tv/Transcoding/v1/hls/kRKtAtz63hw6yHRod6XzR3VgCXRaDne61n5s8DiOfh4i_YtnbEGJBa7xDbE5K0cM0LiKDt50Mj1Wgp6XBS6FmA/transcode/ap-southeast-1/periscope-replay-direct-live/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0.eyJFbmNvZGVyU2V0dGluZyI6ImVuY29kZXJfc2V0dGluZ183MjBwMzBfMTAiLCJIZWlnaHQiOjcyMCwiS2JwcyI6Mjc1MCwiV2lkdGgiOjEyODB9.ldktM4fCFRfkP4ZEBfZPKtlAUNAcTPkoz994YJAzWpE/dynamic_highlatency.m3u8'
-    try:
-        call_py.join_group_call(
-        -1001529161116,
-        AudioVideoPiped(
-            remote,
-            HighQualityAudio(),
-            HighQualityVideo(),
-            headers={
-                'User-Agent': Browsers().chrome_windows,
-            },
-        ),
-        stream_type=StreamType().pulse_stream,
-        )
-    except Exception as e:
-        print(e)
-        pass
+call_py.start()
+idle()
+app.send_message(-1001297289773, '🟢 Ready to sex')
+   # print('start')
+
+
+@app.on_message([!live] & filters.group filters.private)
+async def (app, message: Message):
+ try:
+    if len(message) < 2:
+        return
+    query = message.text.split(None, 1)[1]
+    remote = query
     try:
         call_py.join_group_call(
         -1001297289773,
@@ -71,4 +64,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(e)
         pass
-    idle()
+ except Exception as e:
+    app.send_message(-1001297289773, f'ERROR ‼️ `{e}`')
