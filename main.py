@@ -20,7 +20,7 @@ app = Client(S, Ap, Hs)
 call_py = PyTgCalls(app)
 if __name__ == '__main__':
     call_py.start()
-    remote = 'http://docs.evostream.com/sample_content/assets/sintel1m720p.mp4'
+    remote = 'https://raw.githubusercontent.com/shakida/hlsflow/main/horimiya9/master.m3u8'
     call_py.join_group_call(
         -1001529161116,
         AudioVideoPiped(
