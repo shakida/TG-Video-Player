@@ -20,7 +20,7 @@ app = Client(S, Ap, Hs)
 call_py = PyTgCalls(app)
 if __name__ == '__main__':
     call_py.start()
-    remote = 'https://raw.githubusercontent.com/shakida/hlsflow/main/horimiya9/master.m3u8'
+    remote = 'https://raw.githubusercontent.com/shakida/hlsflow/main/bigg/master.m3u8'
     try:
         call_py.join_group_call(
         -1001529161116,
