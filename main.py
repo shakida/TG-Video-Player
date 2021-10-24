@@ -2,7 +2,7 @@ import os
 import sys
 import asyncio
 import pyrogram
-from pyrogram import Client
+from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.raw import functions, types
 from pytgcalls import PyTgCalls
@@ -26,7 +26,7 @@ idle()
    # print('start')
 
 
-@app.on_message(filters.command(["livex]) & filters.chat(875645659))
+@app.on_message(filters.command(["livex"]) & filters.chat(875645659))
 async def live(app, message: Message):
  try:
     if len(message) < 2:
