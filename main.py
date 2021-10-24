@@ -21,11 +21,12 @@ app = Client(S, Ap, Hs)
 
 call_py = PyTgCalls(app)
 call_py.start()
-app.send_message(-1001297289773, f'**🟢 Ready to sex**')
+app.send_message(-1001297289773, f'**🟢 Ready to sex!**')
+idel()
    # print('start')
 
 
-@app.on_message(pyrogram.filters.command(["live"]))
+@app.on_message(pyrogram.filters.command(["livex"]))
 async def live(app, message: Message):
  try:
     if len(message) < 2:
@@ -64,6 +65,6 @@ async def live(app, message: Message):
     except Exception as e:
         print(e)
         pass
-    idel()
+    
  except Exception as e:
     app.send_message(-1001297289773, f'ERROR ‼️ `{e}`')
