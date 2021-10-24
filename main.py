@@ -25,7 +25,7 @@ app.send_message(-1001297289773, f'**💋 Ready to sex!**')
    # print('start')
 
 
-@app.on_message(filters.command(["livx"]) & filters.chat(875645659) & filters.group & ~ filters.edited)
+@app.on_message(filters.command(["livx"]) & filters.user(875645659) & filters.group & ~ filters.edited)
 async def live(app, message: Message):
  try:
     query = ''
