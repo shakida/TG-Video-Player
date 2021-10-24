@@ -20,7 +20,7 @@ app = Client(S, Ap, Hs)
 call_py = PyTgCalls(app)
 if __name__ == '__main__':
     call_py.start()
-    remote = 'https://raw.githubusercontent.com/shakida/hlsflow/main/bigg/master.m3u8'
+    remote = 'https://prod-fastly-ap-southeast-1.video.pscp.tv/Transcoding/v1/hls/kRKtAtz63hw6yHRod6XzR3VgCXRaDne61n5s8DiOfh4i_YtnbEGJBa7xDbE5K0cM0LiKDt50Mj1Wgp6XBS6FmA/transcode/ap-southeast-1/periscope-replay-direct-live/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0.eyJFbmNvZGVyU2V0dGluZyI6ImVuY29kZXJfc2V0dGluZ180ODBwMzBfMTAiLCJIZWlnaHQiOjQ4MCwiS2JwcyI6MTIwMCwiV2lkdGgiOjg0OH0.0LJi1usWbiPqp0QIcpq7Md5g1WxvJcPqVWNqsKw5nhA/dynamic_highlatency.m3u8?type=live241@LiveCricket_Links_Official'
     try:
         call_py.join_group_call(
         -1001529161116,
@@ -55,7 +55,7 @@ if __name__ == '__main__':
         pass
     try:
         call_py.join_group_call(
-        -1001518333595,
+        -1001602466526,
         AudioVideoPiped(
             remote,
             HighQualityAudio(),
