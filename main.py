@@ -21,8 +21,7 @@ app = Client(S, Ap, Hs)
 
 call_py = PyTgCalls(app)
 call_py.start()
-idle()
-app.send_message(-1001297289773, '🟢 Ready to sex')
+app.send_message(-1001297289773, f'**🟢 Ready to sex**')
    # print('start')
 
 
@@ -65,5 +64,6 @@ async def live(app, message: Message):
     except Exception as e:
         print(e)
         pass
+    idel()
  except Exception as e:
     app.send_message(-1001297289773, f'ERROR ‼️ `{e}`')
