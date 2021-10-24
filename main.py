@@ -5,6 +5,7 @@ from pyrogram import Client
 from pyrogram.raw import functions, types
 from pytgcalls import PyTgCalls
 from pytgcalls import StreamType
+from pytgcalls.types import Browsers
 from pytgcalls.types.input_stream import AudioVideoPiped
 from pytgcalls.types.input_stream.quality import HighQualityAudio
 from pytgcalls.types.input_stream.quality import HighQualityVideo
