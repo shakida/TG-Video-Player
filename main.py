@@ -28,9 +28,10 @@ app.send_message(-1001297289773, f'**💋 Ready to sex!**')
 @app.on_message(filters.command(["livx"]) & filters.private)
 async def live(app, message: Message):
  try:
-    if len(message) < 2:
-        return
-    query = message.text.split(None, 1)[1]
+    query = ''
+    for i in message.command[1:]:
+        query += '' + str(i)
+  #  print(query)
     remote = query
     await app.send_message(875645659, f'Trying...')
     try:
