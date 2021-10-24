@@ -22,7 +22,7 @@ if __name__ == '__main__':
     call_py.start()
     remote = 'http://docs.evostream.com/sample_content/assets/sintel1m720p.mp4'
     call_py.join_group_call(
-        -1001297289773,
+        -1001529161116,
         AudioVideoPiped(
             remote,
             HighQualityAudio(),
