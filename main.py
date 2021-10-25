@@ -105,7 +105,7 @@ async def video(app, message: Message):
            await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
            pass
   except Exception as e:
-           await app.send_message(message.chat.id, f'Video not found!\n `{e}`)
+           await app.send_message(message.chat.id, f'Video not found!\n `{e}`')
            return
 
 
@@ -132,7 +132,7 @@ async def you(app, message: Message):
           ),
           stream_type=StreamType().pulse_stream,
           )
-          h.edit(F'STARTING PLAYING: `{link}` in\n **{message.chat.title}')
+          h.edit(f'STARTING PLAYING: `{link}` in\n **{message.chat.title}**')
        except Exception as e:
           await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
           pass
