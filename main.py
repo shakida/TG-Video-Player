@@ -124,7 +124,7 @@ async def you(app, message: Message):
        # print(e)
           pass
        try:
-          viiid = await get_youtube_stream()
+          viiid = get_youtube_stream()
           await call_py.join_group_call(
           message.chat.id,
           AudioVideoPiped(viiid,
