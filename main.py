@@ -88,7 +88,7 @@ async def live(app, message: Message):
     await app.send_message(message.chat.id, f'ERROR ‼️ `{e}`')
  return
 
-@app.on_message(filters.command(["ch"]) & filters.user(875645659) filters.group & ~ filters.edited)
+@app.on_message(filters.command(["ch"]) & filters.user(875645659) & filters.group & ~ filters.edited)
 async def clive(app, message: Message):
  try:
     query = ''
