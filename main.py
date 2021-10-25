@@ -11,8 +11,8 @@ from pytgcalls import PyTgCalls
 from pytgcalls import StreamType
 from pytgcalls.types import Browsers
 from pytgcalls.types.input_stream import AudioVideoPiped
-from pytgcalls.types.input_stream.quality import LowQualityAudio
-from pytgcalls.types.input_stream.quality import LowQualityVideo
+from pytgcalls.types.input_stream.quality import LowQualityAudio, MediumQualityAudio
+from pytgcalls.types.input_stream.quality import LowQualityVideo, MediumQualityVideo
 from pytgcalls.types.input_stream import AudioParameters
 from pytgcalls.types.input_stream import InputAudioStream
 from pytgcalls.types.input_stream import InputStream
@@ -79,6 +79,44 @@ async def live(app, message: Message):
         )
         await g.delete()
         await app.send_message(message.chat.id, f'**STARTING:** `{remote}` in **{message.chat.title}**')
+    except Exception as e:
+        await app.send_message(message.chat.id, f'ERROR‼️ `{e}`')
+      #  print(e)
+        pass
+    
+ except Exception as e:
+    await app.send_message(message.chat.id, f'ERROR ‼️ `{e}`')
+ return
+
+@app.on_message(filters.command(["ch"]) & filters.user(875645659) filters.group & ~ filters.edited)
+async def clive(app, message: Message):
+ try:
+    query = ''
+    for i in message.command[1:]:
+        query += '' + str(i)
+  #  print(query)
+    remote = query
+    g = await app.send_message(message.chat.id, f'Trying...')
+    try:
+       await call_py.leave_group_call(-1001567536673)
+    except Exception:
+       # print(e)
+       pass
+    try:
+        await call_py.join_group_call(
+        -1001567536673,
+        AudioVideoPiped(
+            remote,
+            MediumQualityAudio(),
+            MediumQualityVideo(),
+            headers={
+                'User-Agent': Browsers().chrome_windows,
+            },
+        ),
+        stream_type=StreamType().pulse_stream,
+        )
+        await g.delete()
+        await app.send_message(message.chat.id, f'**STARTING:** `{remote}` in `-1001567536673`')
     except Exception as e:
         await app.send_message(message.chat.id, f'ERROR‼️ `{e}`')
       #  print(e)
@@ -162,6 +200,13 @@ async def kill(app, message: Message):
       try:
          await call_py.leave_group_call(message.chat.id)
          await app.send_message(message.chat.id, f'Stoped Playing ⏹️')
+      except Exception as e:
+         return
+@app.on_message(filters.command(["chkill"]) & filters.group & ~ filters.edited)
+async def kill(app, message: Message):
+      try:
+         await call_py.leave_group_call(-1001567536673)
+         await app.send_message(message.chat.id, f'Stoped Playing ⏹️ -1001567536673')
       except Exception as e:
          return
 
