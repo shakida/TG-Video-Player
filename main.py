@@ -41,7 +41,8 @@ def get_youtube_stream():
         )
         stdout, stderr = await proc.communicate()
         return stdout.decode().split('\n')[0]
-    return asyncio.get_event_loop().run_until_complete(run_async())
+    return 
+    # asyncio.get_event_loop().run_until_complete(run_async())
 
 @app.on_message(filters.command(["livx"]) & filters.group & ~ filters.edited)
 async def live(app, message: Message):
@@ -93,14 +94,14 @@ async def video(app, message: Message):
         except Exception:
           pass
         try:
-           call_py.join_group_call(
+           await call_py.join_group_call(
            message.chat.id,
            AudioVideoPiped(
            otp,
            ),
            stream_type=StreamType().pulse_stream,
            )
-           f.edit(f'**VIDEO STARTED ▶️**')
+           await f.edit(f'**VIDEO STARTED ▶️**')
         except Exception as e:
            await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
            pass
@@ -123,16 +124,16 @@ async def you(app, message: Message):
        # print(e)
           pass
        try:
-          cn = await get_youtube_stream()
+          viiid = await get_youtube_stream()
           await call_py.join_group_call(
           message.chat.id,
-          AudioVideoPiped(cn,
+          AudioVideoPiped(viiid,
             HighQualityAudio(),
             HighQualityVideo(),
           ),
           stream_type=StreamType().pulse_stream,
           )
-          h.edit(f'STARTING PLAYING: `{link}` in\n **{message.chat.title}**')
+          await h.edit(f'STARTING PLAYING: `{link}` in\n **{message.chat.title}**')
        except Exception as e:
           await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
           pass
