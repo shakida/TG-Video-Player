@@ -155,7 +155,7 @@ def on_stream_end(chat_id: int) -> None:
     try:
        call_py.leave_group_call(chat_id)
     except Exception as e:
-    return
+       return
 
 
 idle()
