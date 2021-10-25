@@ -94,13 +94,13 @@ async def video(app, message: Message):
      videos = message.reply_to_message
      if videos.video or videos.document:
         f = await app.send_message(message.chat.id, f'Downloading..')
-        if os.path.exists(f'VID-{CHAT_ID}.raw'):
-            os.remove(f'VID-{CHAT_ID}.raw')
+        if os.path.exists(f'VID-{message.chat.id}.raw'):
+            os.remove(f'VID-{message.chat.id}.raw')
         try:
             await f.edit("Converting.....")
             video = await app.download_media(videos)
-            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le VID-{CHAT_ID}.raw -y')
-            audio = f'VID-{CHAT_ID}.raw'
+            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le VID-{message.chat.id}.raw -y')
+            audio = f'VID-{message.chat.id}.raw'
         except Exception as e:
             await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
         try:
