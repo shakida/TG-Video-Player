@@ -11,6 +11,12 @@ from pytgcalls.types import Browsers
 from pytgcalls.types.input_stream import AudioVideoPiped
 from pytgcalls.types.input_stream.quality import LowQualityAudio
 from pytgcalls.types.input_stream.quality import LowQualityVideo
+from pytgcalls.types.input_stream import AudioParameters
+from pytgcalls.types.input_stream import InputAudioStream
+from pytgcalls.types.input_stream import InputStream
+from pytgcalls.types.input_stream import InputVideoStream
+from pytgcalls.types.input_stream import VideoParameters
+
 
 from pytgcalls import idle
 S = "BQAx8V0qLC8cDQX0xp6ICAQxglOeHWznUM0mCQm9QKVevKoDXLtC5aynETMtBB-5iv1ZMAlsdqeF-gC1Qbe68XUMlknUKVfGffe4PasUI9DcX2Osf7IgLMIMQ6nXTCF8Tm3F4g_BJ9wmz-85L9g1VPDlEOHvI4ndqk-DRhqPdKSAVBZIyeUGdmxiTdpl6dz_pZYfkwKp0jQTaqQt42l-FD4rYtrjLJBU2Q4fg_-sgx0s-iFQ4lcc53MLl557PCrJAduDcp2wK3reNLkU7SXHvCEec7RxNQVhYc3BB3BX9a3TucbmYyPOtqX_9Hg8rjddxTAJ8zRFrpMUk0yrZ35N9-LqXBjAwgA"
@@ -88,7 +94,15 @@ async def video(app, message: Message):
      videos = message.reply_to_message
      if videos.video or videos.document:
         f = await app.send_message(message.chat.id, f'Downloading..')
-        otp = await app.download_media(videos)
+        if os.path.exists(f'VID-{CHAT_ID}.raw'):
+            os.remove(f'VID-{CHAT_ID}.raw')
+        try:
+            await f.edit("Converting.....")
+            video = await app.download_media(videos)
+            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le VID-{CHAT_ID}.raw -y')
+            audio = f'VID-{CHAT_ID}.raw'
+        except Exception as e:
+            await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
         try:
           await call_py.leave_group_call(message.chat.id)
         except Exception:
@@ -96,10 +110,23 @@ async def video(app, message: Message):
         try:
            await call_py.join_group_call(
            message.chat.id,
-           AudioVideoPiped(
-           otp,
-           ),
-           stream_type=StreamType().pulse_stream,
+           InputStream(
+            InputAudioStream(
+                audio,
+                AudioParameters(
+                    bitrate=48000,
+                ),
+            ),
+            InputVideoStream(
+                video,
+                VideoParameters(
+                    width=640,
+                    height=360,
+                    frame_rate=24,
+                ),
+              ),
+             ),
+           stream_type=StreamType().local_stream,
            )
            await f.edit(f'**VIDEO STARTED ▶️**')
         except Exception as e:
