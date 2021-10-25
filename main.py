@@ -4,7 +4,7 @@ import asyncio
 import pyrogram
 from os import path
 from yt_dlp.utils import DownloadError, GeoRestrictedError
-from yt_dlp importYoutubeDL
+from yt_dlp import YoutubeDL
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.raw import functions, types
