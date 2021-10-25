@@ -150,10 +150,12 @@ async def kill(app, message: Message):
 
          
           
-        
-@call_py.on_stream_end()
-    async def stream_end_handler(client: PyTgCalls, update: Update):
-        await call_py.leave_group_call(update.chat_id)
-        return
-     #  print(f'Stream ended in {update.chat_id}', update)
+@call_py.on_stream_end()      
+def on_stream_end(chat_id: int) -> None:
+    try:
+       call_py.leave_group_call(chat_id)
+    except Exception as e:
+    return
+
+
 idle()
