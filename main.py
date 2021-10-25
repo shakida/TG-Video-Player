@@ -101,10 +101,10 @@ async def video(app, message: Message):
            stream_type=StreamType().pulse_stream,
            )
            f.edit(f'**VIDEO STARTED ▶️**')
-        expect Exception as e:
+        except Exception as e:
            await app.send_message(message.chat.id, f'ERROR‼️: `{e}`)
            pass
-  expect Exception as e:
+  except Exception as e:
            await app.send_message(message.chat.id, f'Video not found!\n `{e}`)
            return
 
