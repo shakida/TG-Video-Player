@@ -97,10 +97,10 @@ async def video(app, message: Message):
         if os.path.exists(f'VID-{message.chat.id}.raw'):
             os.remove(f'VID-{message.chat.id}.raw')
         try:
-            await f.edit("Converting.....")
             video = await app.download_media(videos)
-            os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le VID-{message.chat.id}.raw -y')
-            audio = f'VID-{message.chat.id}.raw'
+         #   os.system(f'ffmpeg -i "{video}" -vn -f s16le -ac 2 -ar 48000 -acodec pcm_s16le VID-{message.chat.id}.raw -y')
+        #    audio = f'VID-{message.chat.id}.raw'
+            await f.edit("Converting.....")
         except Exception as e:
             await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
         try:
@@ -110,23 +110,10 @@ async def video(app, message: Message):
         try:
            await call_py.join_group_call(
            message.chat.id,
-           InputStream(
-           InputAudioStream(
-           audio,
-           AudioParameters(
-           bitrate=48000,
-           ),
-           ),
-           InputVideoStream(
+           AudioVideoPiped(
            video,
-           VideoParameters(
-           width=640,
-           height=360,
-           frame_rate=24,
            ),
-           ),
-           ),
-           stream_type=StreamType().local_stream,
+           stream_type=StreamType().pulse_stream,
            )
            await f.edit(f'**VIDEO STARTED ▶️**')
         except Exception as e:
