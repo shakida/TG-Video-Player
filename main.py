@@ -2,6 +2,9 @@ import os
 import sys
 import asyncio
 import pyrogram
+from os import path
+from yt_dlp.utils import DownloadError, GeoRestrictedError
+from yt_dlp importYoutubeDL
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.raw import functions, types
@@ -31,24 +34,24 @@ app.send_message(-1001297289773, f'**💋 Ready to sex!**')
    # print('start')
 
 
+you = YoutubeDL(
+                {
+                    "outtmpl": f"downloads/%(id)s.%(ext)s",
+                    "quiet": True,
+                    "geo_bypass": True,
+                    "nocheckcertificate": True,
+                }
+            )
+def download(link: str) -> str:
+    try:
+       info = you.extract_info(link, False)
+       you.download([link])
+       return path.join("downloads", f"{info['id']}.{info['ext']}")
+    except DownloadError:
+    except GeoRestrictedError:
+    except Exception as e:
+      print(e)
 
-def get_youtube_stream():
-    # USE THIS IF YOU WANT ASYNC WAY
-    async def run_async():
-        proc = await asyncio.create_subprocess_exec(
-            'youtube-dl',
-            '-g',
-            '-f',
-            # CHANGE THIS BASED ON WHAT YOU WANT
-            'best[height<=?720][width<=?1280]',
-            '{link}',
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.PIPE,
-        )
-        stdout, stderr = await proc.communicate()
-        return stdout.decode().split('\n')[0]
-    return 
-    # asyncio.get_event_loop().run_until_complete(run_async())
 
 @app.on_message(filters.command(["livx"]) & filters.group & ~ filters.edited)
 async def live(app, message: Message):
@@ -112,6 +115,8 @@ async def video(app, message: Message):
            message.chat.id,
            AudioVideoPiped(
            video,
+           LowQualityAudio(),
+           LowQualityVideo(),
            ),
            stream_type=StreamType().pulse_stream,
            )
@@ -138,7 +143,7 @@ async def you(app, message: Message):
        # print(e)
           pass
        try:
-          viiid = get_youtube_stream()
+          viiid = download(link)
           await call_py.join_group_call(
           message.chat.id,
           AudioVideoPiped(viiid,
