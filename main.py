@@ -102,7 +102,7 @@ async def video(app, message: Message):
            )
            f.edit(f'**VIDEO STARTED ▶️**')
         except Exception as e:
-           await app.send_message(message.chat.id, f'ERROR‼️: `{e}`)
+           await app.send_message(message.chat.id, f'ERROR‼️: `{e}`')
            pass
   except Exception as e:
            await app.send_message(message.chat.id, f'Video not found!\n `{e}`)
