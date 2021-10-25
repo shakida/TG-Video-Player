@@ -3,3 +3,4 @@ requests
 ffmpeg-python
 git+https://github.com/pytgcalls/pytgcalls@dev
 git+https://github.com/pyrogram/pyrogram@master
+aiohttp
