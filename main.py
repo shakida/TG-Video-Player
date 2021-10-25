@@ -3,7 +3,6 @@ import sys
 import asyncio
 import pyrogram
 from os import path
-from yt_dlp.utils import DownloadError, GeoRestrictedError
 from yt_dlp import YoutubeDL
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -47,8 +46,6 @@ def download(link: str) -> str:
        info = you.extract_info(link, False)
        you.download([link])
        return path.join("downloads", f"{info['id']}.{info['ext']}")
-    except DownloadError:
-    except GeoRestrictedError:
     except Exception as e:
       print(e)
 
