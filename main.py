@@ -111,21 +111,21 @@ async def video(app, message: Message):
            await call_py.join_group_call(
            message.chat.id,
            InputStream(
-            InputAudioStream(
-                audio,
-                AudioParameters(
-                    bitrate=48000,
-                ),
-            ),
-            InputVideoStream(
-                video,
-                VideoParameters(
-                    width=640,
-                    height=360,
-                    frame_rate=24,
-                ),
-              ),
-             ),
+           InputAudioStream(
+           audio,
+           AudioParameters(
+           bitrate=48000,
+           ),
+           ),
+           InputVideoStream(
+           video,
+           VideoParameters(
+           width=640,
+           height=360,
+           frame_rate=24,
+           ),
+           ),
+           ),
            stream_type=StreamType().local_stream,
            )
            await f.edit(f'**VIDEO STARTED ▶️**')
@@ -172,7 +172,7 @@ async def you(app, message: Message):
 async def kill(app, message: Message):
       try:
          await call_py.leave_group_call(message.chat.id)
-         await app.send_message(message.chat.id, f'Stoped ⏹️')
+         await app.send_message(message.chat.id, f'Stoped Playing ⏹️')
       except Exception as e:
          return
 
