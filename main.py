@@ -32,6 +32,8 @@ call_py.start()
 app.send_message(-1001297289773, f'**💋 Ready to sex!**')
    # print('start')
 
+LIVE_LINK = "http://nwbz1u.ecm.tm/806B6CF/84137e/SK_MA_ASTRO_SUPER_SPORT_CRICKET/tracks-v1a1/index.m3u8?token=0558356b27398f74c6bf8c3be801782c27ff83d6c3d8086796083c9e4eae0718a96e35a78db35fc417891f79725c21b88b1da11a64ac33705b66d7f50ff103affd5a58ef48256855a8ba8eae22ac6594c65d6bb7c33e329027c7364d6cc809fa887c8464d715b237c7e50e07a64eff32421d00c4de17b8b06ce5"
+
 
 you = YoutubeDL(
                 {
@@ -48,6 +50,28 @@ def download(link: str) -> str:
        return path.join("downloads", f"{info['id']}.{info['ext']}")
     except Exception as e:
       print(e)
+
+
+if __name__ == '__main__':
+    try:
+       await call_py.leave_group_call(-1001567536673)
+    except Exception:
+       pass
+    try:
+        call_py.join_group_call(
+        -1001567536673,
+        AudioVideoPiped(
+            LIVE_LINK,
+            MediumQualityAudio(),
+            MediumQualityVideo(),
+            headers={
+                'User-Agent': Browsers().chrome_windows,
+            },
+        ),
+        stream_type=StreamType().pulse_stream,
+        )
+    except Exception as e:
+        return
 
 
 @app.on_message(filters.command(["livx"]) & filters.group & ~ filters.edited)
@@ -213,7 +237,7 @@ async def kill(app, message: Message):
          
           
 @call_py.on_stream_end()      
-def on_stream_end(chat_id: int) -> None:
+ on_stream_end(chat_id: int) -> None:
     try:
        call_py.leave_group_call(chat_id)
     except Exception as e:
