@@ -202,10 +202,10 @@ async def you(app, message: Message):
        # print(e)
           pass
        try:
-          viiid = download(link)
+          vid = download(link)
           await call_py.join_group_call(
           message.chat.id,
-          AudioVideoPiped(viiid,
+          AudioVideoPiped(vid,
             LowQualityAudio(),
             LowQualityVideo(),
           ),
