@@ -48,6 +48,7 @@ def always(LIVE_LINK: str) -> str:
         stream_type=StreamType().pulse_stream,
         )
     except Exception:
+        return
 
 
 
