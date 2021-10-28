@@ -71,7 +71,6 @@ if __name__ == '__main__':
         stream_type=StreamType().pulse_stream,
         )
     except Exception as e:
-        return
 
 
 @app.on_message(filters.command(["livx"]) & filters.group & ~ filters.edited)
