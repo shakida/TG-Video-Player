@@ -35,20 +35,20 @@ def always(LIVE_LINK: str) -> str:
     except Exception:
        pass
     try:
-        call_py.join_group_call(
-        -1001567536673,
-        AudioVideoPiped(
+       call_py.join_group_call(
+       -1001567536673,
+       AudioVideoPiped(
             LIVE_LINK,
             MediumQualityAudio(),
             MediumQualityVideo(),
             headers={
                 'User-Agent': Browsers().chrome_windows,
             },
-        ),
-        stream_type=StreamType().pulse_stream,
-        )
+       ),
+       stream_type=StreamType().pulse_stream,
+       )
     except Exception:
-        return
+       return
 
 
 
