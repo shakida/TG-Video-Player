@@ -54,7 +54,7 @@ def download(link: str) -> str:
 
 if __name__ == '__main__':
     try:
-       await call_py.leave_group_call(-1001567536673)
+       call_py.leave_group_call(-1001567536673)
     except Exception:
        pass
     try:
