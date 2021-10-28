@@ -25,14 +25,36 @@ S = "BQAx8V0qLC8cDQX0xp6ICAQxglOeHWznUM0mCQm9QKVevKoDXLtC5aynETMtBB-5iv1ZMAlsdqe
 Ap = "2687507"
 Hs = "2401930e935bc7b124eecc028d47f320"
 app = Client(S, Ap, Hs)
-
-
+LIVE_LINK = "http://nwbz1u.ecm.tm/806B6CF/84137e/SK_MA_ASTRO_SUPER_SPORT_CRICKET/tracks-v1a1/index.m3u8?token=0558356b27398f74c6bf8c3be801782c27ff83d6c3d8086796083c9e4eae0718a96e35a78db35fc417891f79725c21b88b1da11a64ac33705b66d7f50ff103affd5a58ef48256855a8ba8eae22ac6594c65d6bb7c33e329027c7364d6cc809fa887c8464d715b237c7e50e07a64eff32421d00c4de17b8b06ce5"
 call_py = PyTgCalls(app)
 call_py.start()
+
+def always(LIVE_LINK: str) -> str:
+    try:
+       call_py.leave_group_call(-1001567536673)
+    except Exception:
+       pass
+    try:
+        call_py.join_group_call(
+        -1001567536673,
+        AudioVideoPiped(
+            LIVE_LINK,
+            MediumQualityAudio(),
+            MediumQualityVideo(),
+            headers={
+                'User-Agent': Browsers().chrome_windows,
+            },
+        ),
+        stream_type=StreamType().pulse_stream,
+        )
+    except Exception:
+
+
+
 app.send_message(-1001297289773, f'**💋 Ready to sex!**')
+always(LIVE_LINK)
    # print('start')
 
-LIVE_LINK = "http://nwbz1u.ecm.tm/806B6CF/84137e/SK_MA_ASTRO_SUPER_SPORT_CRICKET/tracks-v1a1/index.m3u8?token=0558356b27398f74c6bf8c3be801782c27ff83d6c3d8086796083c9e4eae0718a96e35a78db35fc417891f79725c21b88b1da11a64ac33705b66d7f50ff103affd5a58ef48256855a8ba8eae22ac6594c65d6bb7c33e329027c7364d6cc809fa887c8464d715b237c7e50e07a64eff32421d00c4de17b8b06ce5"
 
 
 you = YoutubeDL(
@@ -50,27 +72,6 @@ def download(link: str) -> str:
        return path.join("downloads", f"{info['id']}.{info['ext']}")
     except Exception as e:
       print(e)
-
-async def on(LIVE_LINK: str) -> str:
-    try:
-       await call_py.leave_group_call(-1001567536673)
-    except Exception:
-       pass
-    try:
-        await call_py.join_group_call(
-        -1001567536673,
-        AudioVideoPiped(
-            LIVE_LINK,
-            MediumQualityAudio(),
-            MediumQualityVideo(),
-            headers={
-                'User-Agent': Browsers().chrome_windows,
-            },
-        ),
-        stream_type=StreamType().pulse_stream,
-        )
-    except Exception as e:
-        return
 
 
 @app.on_message(filters.command(["livx"]) & filters.group & ~ filters.edited)
