@@ -51,14 +51,13 @@ def download(link: str) -> str:
     except Exception as e:
       print(e)
 
-
-if __name__ == '__main__':
+async def on(LIVE_LINK: str) -> str:
     try:
-       call_py.leave_group_call(-1001567536673)
+       await call_py.leave_group_call(-1001567536673)
     except Exception:
        pass
     try:
-        call_py.join_group_call(
+        await call_py.join_group_call(
         -1001567536673,
         AudioVideoPiped(
             LIVE_LINK,
@@ -71,6 +70,7 @@ if __name__ == '__main__':
         stream_type=StreamType().pulse_stream,
         )
     except Exception as e:
+        return
 
 
 @app.on_message(filters.command(["livx"]) & filters.group & ~ filters.edited)
