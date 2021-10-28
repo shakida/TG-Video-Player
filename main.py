@@ -236,8 +236,8 @@ async def kill(app, message: Message):
 
          
           
-@call_py.on_stream_end()      
- on_stream_end(chat_id: int) -> None:
+@call_py.on_stream_end()
+def on_stream_end(chat_id: int) -> None:
     try:
        call_py.leave_group_call(chat_id)
     except Exception as e:
