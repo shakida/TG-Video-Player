@@ -11,8 +11,8 @@ from pytgcalls import PyTgCalls
 from pytgcalls import StreamType
 from pytgcalls.types import Browsers
 from pytgcalls.types.input_stream import AudioVideoPiped
-from pytgcalls.types.input_stream.quality import LowQualityAudio, MediumQualityAudio
-from pytgcalls.types.input_stream.quality import LowQualityVideo, MediumQualityVideo
+from pytgcalls.types.input_stream.quality import LowQualityAudio, MediumQualityAudio, HighQualityAudio
+from pytgcalls.types.input_stream.quality import LowQualityVideo, MediumQualityVideo, HighQualityVideo
 from pytgcalls.types.input_stream import AudioParameters
 from pytgcalls.types.input_stream import InputAudioStream
 from pytgcalls.types.input_stream import InputStream
@@ -39,7 +39,7 @@ def always(LIVE_LINK: str) -> str:
        -1001567536673,
        AudioVideoPiped(
             LIVE_LINK,
-            MediumQualityAudio(),
+            HighQualityAudio(),
             MediumQualityVideo(),
             headers={
                 'User-Agent': Browsers().chrome_windows,
@@ -94,7 +94,7 @@ async def live(app, message: Message):
         message.chat.id,
         AudioVideoPiped(
             remote,
-            LowQualityAudio(),
+            HighQualityAudio(),
             LowQualityVideo(),
             headers={
                 'User-Agent': Browsers().chrome_windows,
@@ -132,7 +132,7 @@ async def clive(app, message: Message):
         -1001567536673,
         AudioVideoPiped(
             remote,
-            MediumQualityAudio(),
+            HighQualityAudio(),
             MediumQualityVideo(),
             headers={
                 'User-Agent': Browsers().chrome_windows,
@@ -175,7 +175,7 @@ async def video(app, message: Message):
            message.chat.id,
            AudioVideoPiped(
            video,
-           LowQualityAudio(),
+           HighQualityAudio(),
            LowQualityVideo(),
            ),
            stream_type=StreamType().pulse_stream,
@@ -207,7 +207,7 @@ async def you(app, message: Message):
           await call_py.join_group_call(
           message.chat.id,
           AudioVideoPiped(vid,
-            LowQualityAudio(),
+            HighQualityAudio(),
             LowQualityVideo(),
           ),
           stream_type=StreamType().pulse_stream,
@@ -238,10 +238,10 @@ async def kill(app, message: Message):
          
           
 @call_py.on_stream_end()
-def on_stream_end(chat_id: int) -> None:
+def on_stream_end(: int) -> None:
     try:
        call_py.leave_group_call(chat_id)
-    except Exception as e:
+    except Exception:
        return
 
 
