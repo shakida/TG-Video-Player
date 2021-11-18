@@ -30,6 +30,7 @@ LIVE_LINKhh = "http://nwbz1u.ecm.tm/806B6CF/84137e/SK_MA_ASTRO_SUPER_SPORT_CRICK
 call_py = PyTgCalls(app)
 call_py.start()
 
+"""
 def always(LIVE_LINK: str) -> str:
     try:
        call_py.leave_group_call(-1001567536673)
@@ -50,6 +51,7 @@ def always(LIVE_LINK: str) -> str:
        )
     except Exception:
        return
+"""
 
 
 
